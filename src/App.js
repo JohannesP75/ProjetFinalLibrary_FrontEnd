@@ -1,24 +1,51 @@
 import logo from './logo.svg';
-import './App.css';
+//import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Home from './pages/Home';
+import Header from './pages/Header';
+import NoPage from './pages/NoPage';
+import NoPageYet from './pages/NoPageYet';
+import About from './pages/About';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        
+        {/* Branches of the library system */}
+        <Route path="/branches">
+          <Route path="" element={<NoPageYet />} />
+          <Route path=":id" element={<NoPageYet />} />
+        </Route>
+
+        {/* Authors featured in the library system */}
+        <Route path="/authors">
+          <Route path="" element={<NoPageYet />} />
+          <Route path=":id" element={<NoPageYet />} />
+        </Route>
+
+        {/* Works present in the library system */}
+        <Route path="/works">
+          <Route path="" element={<NoPageYet />} />
+          <Route path=":id" element={<NoPageYet />} />
+        </Route>
+
+        {/* Items present in the library system */}
+        <Route path="/items">
+          <Route path="" element={<NoPageYet />} />
+          <Route path=":id" element={<NoPageYet />} />
+        </Route>
+
+        <Route path="*" element={<NoPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
