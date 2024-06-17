@@ -15,8 +15,10 @@ function Header() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <NavDropdown title="Système" id="basic-nav-system">
+                            <NavDropdown.Item href="/rules">Règlement</NavDropdown.Item>
                             <NavDropdown.Item href="/branches">Branches</NavDropdown.Item>
                             <NavDropdown.Divider />
+                            <NavDropdown.Item href="/legal">Mentions légales</NavDropdown.Item>
                             <NavDropdown.Item href="/about">A propos</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Inventaire" id="basic-nav-inventory">
