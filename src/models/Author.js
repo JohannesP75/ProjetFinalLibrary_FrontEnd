@@ -1,3 +1,4 @@
+import axios from "axios";
 import CRUDInterface from "../config/CRUDInterface";
 import { AuthorType } from "../config/Constants";
 
@@ -10,13 +11,21 @@ class Author{
      */
     static tableName="/authors";
 
+    static axiosInstance = axios.create({ baseURL: URL_API_ROOT+tableName })
+
     /**
      * Creates a new instance of Author in the database
      * @param {Author} newAuthor New author to create
      * @returns 
      */
     static create(newAuthor){
-        return this.CRUDInterfaceAuthor.create(newAuthor);
+        return this.axiosInstance.post("", newAuthor)
+        .then((resp)=>{
+            return resp.data
+        })
+        .catch((error)=>{
+            console.log(error)
+        });
     }
 
     /**
@@ -25,7 +34,12 @@ class Author{
      * @returns Instance of Author
      */
     static get(id){
-        return this.CRUDInterfaceAuthor.get(id);
+        return this.axiosInstance.get(`/${id}`)
+        .then((resp)=>{
+            return resp.data
+        }).catch((error)=>{
+            console.log(error)
+        })
     }
 
     /**
@@ -33,7 +47,12 @@ class Author{
      * @returns List of instances of Author
      */
     static getAll(){
-        return this.CRUDInterfaceAuthor.getAll();
+        return this.axiosInstance.get()
+        .then((resp)=>{
+            return resp.data
+        }).catch((error)=>{
+            console.log(error)
+        })
     }
 
     /**
@@ -43,7 +62,13 @@ class Author{
      * @returns HTTPS statute
      */
     static update(id, patch){
-        return this.CRUDInterfaceAuthor.update(id, patch);
+        return this.axiosInstance.patch(`/${id}`, patch)
+        .then((resp)=>{
+            return resp.data
+        })
+        .catch((error)=>{
+            console.log(error)
+        });
     }
 
     /**
@@ -52,7 +77,12 @@ class Author{
      * @returns 
      */
     static delete(id){
-        return this.CRUDInterfaceAuthor.delete(id);
+        return this.axiosInstance.delete(`/${id}`)
+        .then((resp)=>{
+            return resp.data
+        }).catch((error)=>{
+            console.log(error)
+        })
     }
 
     /**
