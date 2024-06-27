@@ -2,9 +2,10 @@ import React from 'react'
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from 'react-router-dom'
 import AuthorLink from './AuthorLink';
+import { Audio } from '../models/Document';
 
 function AudioListItem({audioWork}) {
-    const pageDetails="/audio/"+audioWork.id;
+    const pageDetails=Audio.tableName+"/"+audioWork.id;
     const lengthArrayAuthors=audioWork.authors.length;
     const lengthArrayInterpreters=audioWork.interpreters.length;
     const hours=Math.floor(audioWork.length/3600);

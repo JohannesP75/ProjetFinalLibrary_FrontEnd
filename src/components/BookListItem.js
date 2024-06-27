@@ -1,21 +1,22 @@
 import { useState } from "react";
 import { ListGroup } from "react-bootstrap"
 import { Link } from "react-router-dom";
+import { Book } from "../models/Document";
 
-function BranchListItem(props){
-    const [branch, setBranch]=useState(props.branch)
-    const branchPage="/branches/"+branch.id;
+function BooksListItem(props){
+    const [book, setBook]=useState(props.book);
+    const [bookPage, setBookPage]=useState(Book.tableName+"/"+branch.id);
 
     return(
         <ListGroup horizontal='sm' className="my-2">
             <ListGroup.Item>
-                <p>{branch.name}</p>
+                <p>{book.title}</p>
             </ListGroup.Item>
             <ListGroup.Item>
-                <Link to={branchPage} />
+                <Link to={bookPage} />
             </ListGroup.Item>
         </ListGroup>
     )
 }
 
-export default BranchListItem
+export default BooksListItem

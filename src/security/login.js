@@ -23,7 +23,7 @@ applyAuthTokenInterceptor(axiosInstance, { requestRefresh });
  * Login function
  * @param {*} params username and passwords of the user
  */
-const login = async (params) => {
+const function_login = async (params) => {
   const response = await axiosInstance.post('/login', params)
 
   // save tokens to storage
@@ -31,12 +31,20 @@ const login = async (params) => {
     accessToken: response.data.access_token,
     refreshToken: response.data.refresh_token
   })
+
+  // Save results
+  localStorage.removeItem("login-result-message");
+
+  localStorage.setItem("login-result-message", JSON.stringify({
+    status: response.status,
+    statusText: response.statusText
+  }))
 }
 
 /**
  * Logout function
  * @returns 
  */
-const logout = () => clearAuthTokens()
+const function_logout = () => clearAuthTokens()
 
-export {requestRefresh, login, logout}
+export {requestRefresh, function_login, function_logout}

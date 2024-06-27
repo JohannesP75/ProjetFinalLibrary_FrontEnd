@@ -22,6 +22,15 @@ import WorksListPage from './pages/WorksListPage';
 import BooksListPage from './pages/BooksListPage';
 import VideosListPage from './pages/VideosListPage';
 import AudiosListPage from './pages/AudiosListPage';
+import BookPage from './pages/BookPage';
+import VideoPage from './pages/VideoPage';
+import AudioPage from './pages/AudioPage';
+import LoginPage from './pages/LoginPage';
+import ProfilePage from './pages/ProfilePage';
+import DeweyListPage from './pages/DeweyListPage';
+import DeweyPage from './pages/DeweyPage';
+import ANSCRPage from './pages/ANSCRPage';
+import ANSCRListPage from './pages/ANSCRListPage';
 
 function App() {
   return (
@@ -32,9 +41,8 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/legal" element={<LegalPage />} /> 
         <Route path="/rules" element={<RulesPage />} />
-        <Route path="/login" element={<NoPageYet />} />
-        <Route path="/profile" element={<NoPageYet />} />
-        {/* <Route path="/robots.txt" element={<NoPageYet />} /> */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         
         {/* Branches of the library system */}
         <Route path="/branches">
@@ -54,34 +62,35 @@ function App() {
 
           <Route path="books">
             <Route path="" element={<BooksListPage />} />
-            <Route path=":id" element={<NoPageYet />} />
+            <Route path=":id" element={<BookPage />} />
 
             <Route path="dewey">
-              <Route path="" element={<NoPageYet />} />
-              <Route path=":code" element={<NoPageYet />} />
+              <Route path="" element={<DeweyListPage />} />
+              <Route path=":id" element={<DeweyPage />} />
             </Route>
           </Route>
           
           <Route path="movies">
             <Route path="" element={<VideosListPage />} />
-            <Route path=":id" element={<NoPageYet />} />
+            <Route path=":id" element={<VideoPage />} />
           </Route>
           
           <Route path="audios">
             <Route path="" element={<AudiosListPage />} />
-            <Route path=":id" element={<NoPageYet />} />
+            <Route path=":id" element={<AudioPage />} />
 
             <Route path="anscr">
-              <Route path="" element={<NoPageYet />} />
-              <Route path=":code" element={<NoPageYet />} />
+              <Route path="" element={<ANSCRListPage />} />
+              <Route path=":id" element={<ANSCRPage />} />
             </Route>
           </Route>
         </Route>
 
         {/* Items present in the library system */}
         <Route path="/items">
-          <Route path="" element={<NoPageYet />} />
-          <Route path=":id" element={<NoPageYet />} />
+          <Route path="books/:id" element={<NoPageYet />} />
+          <Route path="audios/:id" element={<NoPageYet />} />
+          <Route path="videos/:id" element={<NoPageYet />} />
         </Route>
 
         {/* Administration */}

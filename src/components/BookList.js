@@ -1,13 +1,17 @@
-import React from 'react'
-//import BookListItem from './BookListItem'
+import React, { useState } from 'react'
+import { Book } from '../models/Document'
+import BookListItem from './BookListItem'
 
-function BookList({listBooks}) {
+function BookList(props) {
+    const [listBooks, setListBooks]=useState(props.listBooks!==null?
+        props.listBooks:
+        Book.getAll())
+
     return (
         <>
             {
                 listBooks.map(book=>(
-                    //<BookListItem book={book} />
-                    <p>book.name</p>
+                    <BookListItem book={book} />
                 ))
             }
         </>

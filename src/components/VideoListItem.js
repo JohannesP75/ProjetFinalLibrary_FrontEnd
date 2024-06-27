@@ -1,31 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from 'react-router-dom'
 import AuthorLink from './AuthorLink';
+import { Video } from '../models/Document';
 
-function VideoListItem({videoWork}) {
-    const pageDetails="/video/"+videoWork.id;
+function VideoListItem(props) {
+    const [video, setVideo]=useState(props.video);
+    const pageDetails=Video.tableName+"/"+videoWork.id;
     const lengthArrayAuthors=videoWork.authors.length;
-    /*const hours=Math.floor(videoWork.length/60);
-    const minutes=videoWork.length%60;
-    let videoLength="";
-    
-    if(hours!=0)videoLength+=`${hours} h`
-    if(minutes!=0){
-        if(S!="")videoLength+=` ${minutes} '`;
-        else videoLength+=`${minutes} '`;
-    }*/
 
     return (
         <ListGroup horizontal='sm' className="my-2">
             <ListGroup.Item>
                 {/** Title of the work */}
-                <p>{videoWork.title}</p>
+                <p>{video.title}</p>
             </ListGroup.Item>
             <ListGroup.Item>
                 {/** Authors list */}
                 {
-                    videoWork.authors.map((author, count)=>{
+                    video.authors.map((author, count)=>{
                         <AuthorLink author={author} />
 
                         switch(count){

@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BranchListItem from './BranchListItem';
 
-function BranchList({branchList}) {
+function BranchList(props) {
+    const [branchList, setBranchList]=useState([]);
+
     var tab_auth=[
         {id: 0, name: "Branche centrale", items: [], workers:[]},
         {id: 1, name: "C.D.I. scolaire", items: [], workers:[]}
     ];
 
-    if(branchList.length==0||branchList==null){
+    if(props.branchList.length==0){
         branchList=tab_auth;//Branch.getAll();
     }
 

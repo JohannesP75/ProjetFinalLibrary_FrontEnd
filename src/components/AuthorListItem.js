@@ -2,11 +2,12 @@ import React from 'react'
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from 'react-router-dom'
 import { AuthorType } from '../config/Constants';
+import { Author } from '../models/Author';
 
 function AuthorListItem({author}) {
     var isCollective=author.author_type==AuthorType.AUTHOR_COLLECTIVE;
     var hasDied=!isCollective&&author.year_death!=null;
-    var pageAuthor="/authors/"+author.id;
+    var pageAuthor=Author.tableName+"/"+author.id;
     var hasAudioWorks=(author.audios.length>0);
     var hasWorks=(author.documents.length>0);
 
